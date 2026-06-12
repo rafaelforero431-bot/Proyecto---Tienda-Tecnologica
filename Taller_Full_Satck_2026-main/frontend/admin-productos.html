@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Tecnohogar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+</head>
+<body class="bg-light text-dark">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-warning fs-3" href="admin-productos.html"><i class="bi bi-shield-lock-fill"></i> Tecnohogar Admin</a>
+            <div class="navbar-nav ms-auto fs-5">
+                <a class="nav-link" href="index.html">Ir a la Tienda</a>
+                <a class="nav-link active" href="admin-productos.html">Gestionar Productos</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5" style="max-width: 600px;">
+        <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5 bg-white">
+            <div class="text-center mb-4">
+                <div class="display-4 text-warning mb-2"><i class="bi bi-box-seam-fill"></i></div>
+                <h1 class="fw-bold text-secondary">Panel de Inventario</h1>
+                <p class="text-muted">Ingresa los datos del nuevo artículo para indexarlo automáticamente al catálogo.</p>
+            </div>
+            <hr class="mb-4 border-warning">
+
+            <form id="formAdminProductos">
+                <div class="mb-3">
+                    <label for="nombreProducto" class="form-label fw-bold text-secondary">Nombre del Producto</label>
+                    <input type="text" class="form-control form-control-lg rounded-3" id="nombreProducto" placeholder="Ej: Memoria RAM DDR5 16GB" required>
+                </div>
+                <div class="mb-3">
+                    <label for="precioProducto" class="form-label fw-bold text-secondary">Precio de Venta ($)</label>
+                    <input type="number" class="form-control form-control-lg rounded-3" id="precioProducto" placeholder="Ej: 450000" required>
+                </div>
+                <div class="mb-3">
+                    <label for="descripcionProducto" class="form-label fw-bold text-secondary">Descripción Técnica Corta</label>
+                    <textarea class="form-control rounded-3" id="descripcionProducto" rows="3" placeholder="Detalla las características principales del hardware..." required></textarea>
+                </div>
+                <button type="submit" class="btn btn-warning btn-lg w-100 fw-bold text-dark shadow-sm rounded-3 mt-2"><i class="bi bi-plus-circle-fill"></i> Registrar en Catálogo</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="text-center mt-5 p-4 bg-dark text-white-50">
+        <div class="container">
+            <p class="mb-0 small">&copy; 2026 - Proyecto Fase Electiva SENA - Panel de Control Interno</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
