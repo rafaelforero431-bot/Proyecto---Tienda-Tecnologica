@@ -16,7 +16,7 @@ Tienda online básica desarrollada como proyecto final para el programa de forma
 
 - `frontend/`: Páginas de la interfaz de usuario, estilos, imágenes y lógica del lado del cliente.
 - `backend/`: Servidor API y controladores de comunicación.
-- `README_PROYECTO FINAL_2026_2026.md`: Documentación oficial del proyecto.
+- `README_PROYECTO FINAL_2026.md`: Documentación oficial del proyecto.
 
 ## 🛠️ Instrucciones de Instalación y Ejecución
 
