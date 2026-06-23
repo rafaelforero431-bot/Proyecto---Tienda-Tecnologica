@@ -10,48 +10,88 @@
 <body class="bg-light text-dark">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-warning fs-3" href="admin-productos.html"><i class="bi bi-shield-lock-fill"></i> Tecnohogar Admin</a>
-            <div class="navbar-nav ms-auto fs-5">
-                <a class="nav-link" href="index.html">Ir a la Tienda</a>
-                <a class="nav-link active" href="admin-productos.html">Gestionar Productos</a>
-            </div>
+    <div class="container">
+        <a class="navbar-brand fw-bold text-warning fs-3" href="login.html"><i class="bi bi-shield-lock-fill"></i> Tecnohogar Admin</a>
+        <div class="navbar-nav ms-auto fs-5 align-items-center">
+            <a class="nav-link" href="index.html">Ir a la Tienda</a>
+            <a class="nav-link active me-3" href="admin-productos.html">Gestionar Productos</a>
+            <button class="btn btn-outline-danger btn-sm fw-bold" id="btnCerrarSesion"><i class="bi bi-box-arrow-right"></i> Salir</button>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <div class="container mt-5" style="max-width: 600px;">
-        <div class="card border-0 shadow-lg rounded-4 p-4 p-md-5 bg-white">
-            <div class="text-center mb-4">
-                <div class="display-4 text-warning mb-2"><i class="bi bi-box-seam-fill"></i></div>
-                <h1 class="fw-bold text-secondary">Panel de Inventario</h1>
-                <p class="text-muted">Ingresa los datos del nuevo artículo para indexarlo automáticamente al catálogo.</p>
+    <div class="container-fluid my-5 px-4">
+        <div class="row g-4">
+            
+            <div class="col-lg-4">
+                <div class="card border-0 shadow rounded-4 p-4 bg-white">
+                    <div class="text-center mb-3">
+                        <div class="display-5 text-warning mb-2"><i class="bi bi-box-seam-fill"></i></div>
+                        <h2 class="fw-bold h4 text-secondary" id="tituloFormulario">Registrar Artículo</h2>
+                        <p class="text-muted small">Indexa o actualiza datos directamente en la base de datos MySQL.</p>
+                    </div>
+                    <hr class="mb-4 border-warning">
+
+                    <form id="formAdminProductos">
+                        <input type="hidden" id="idProducto">
+                        <div class="mb-3">
+                            <label for="nombreProducto" class="form-label fw-bold text-secondary small">Nombre del Producto</label>
+                            <input type="text" class="form-control rounded-3" id="nombreProducto" placeholder="Ej: Memoria RAM DDR5 16GB" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="precioProducto" class="form-label fw-bold text-secondary small">Precio de Venta ($)</label>
+                            <input type="number" class="form-control rounded-3" id="precioProducto" placeholder="Ej: 450000" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcionProducto" class="form-label fw-bold text-secondary small">Descripción Técnica Corta</label>
+                            <textarea class="form-control rounded-3" id="descripcionProducto" rows="3" placeholder="Detalla las características principales del hardware..." required></textarea>
+                        </div>
+                        
+                        <div id="respuestaAdmin" class="text-center fw-bold small my-2"></div>
+
+                        <button type="submit" id="btnGuardar" class="btn btn-warning w-100 fw-bold text-dark shadow-sm rounded-3 mt-2">
+                            <i class="bi bi-plus-circle-fill"></i> Registrar en Catálogo
+                        </button>
+                    </form>
+                </div>
             </div>
-            <hr class="mb-4 border-warning">
 
-            <form id="formAdminProductos">
-                <div class="mb-3">
-                    <label for="nombreProducto" class="form-label fw-bold text-secondary">Nombre del Producto</label>
-                    <input type="text" class="form-control form-control-lg rounded-3" id="nombreProducto" placeholder="Ej: Memoria RAM DDR5 16GB" required>
+            <div class="col-lg-8">
+                <div class="card border-0 shadow rounded-4 p-4 bg-white">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3 class="fw-bold h4 text-secondary mb-0"><i class="bi bi-table text-warning"></i> Inventario en Tiempo Real</h3>
+                        <span class="badge bg-dark text-warning p-2" id="totalItems">MySQL Conectado</span>
+                    </div>
+                    <hr class="mb-3 border-secondary-subtle">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col" style="width: 5%;">ID</th>
+                                    <th scope="col" style="width: 25%;">Producto</th>
+                                    <th scope="col" style="width: 20%;">Precio</th>
+                                    <th scope="col" style="width: 35%;">Descripción</th>
+                                    <th scope="col" style="width: 15%;" class="text-center">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaProductos">
+                                <tr>
+                                    <td colspan="5" class="text-center text-muted py-4">Cargando inventario desde el servidor...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="precioProducto" class="form-label fw-bold text-secondary">Precio de Venta ($)</label>
-                    <input type="number" class="form-control form-control-lg rounded-3" id="precioProducto" placeholder="Ej: 450000" required>
-                </div>
-                <div class="mb-3">
-                    <label for="descripcionProducto" class="form-label fw-bold text-secondary">Descripción Técnica Corta</label>
-                    <textarea class="form-control rounded-3" id="descripcionProducto" rows="3" placeholder="Detalla las características principales del hardware..." required></textarea>
-                </div>
-                <button type="submit" class="btn btn-warning btn-lg w-100 fw-bold text-dark shadow-sm rounded-3 mt-2"><i class="bi bi-plus-circle-fill"></i> Registrar en Catálogo</button>
-            </form>
+            </div>
+
         </div>
     </div>
 
     <footer class="text-center mt-5 p-4 bg-dark text-white-50">
-        <div class="container">
-            <p class="mb-0 small">&copy; 2026 - Proyecto Fase Electiva SENA - Panel de Control Interno</p>
-        </div>
+        <p class="mb-0">&copy; 2026 TecnoHogar Admin - Panel de Control Interno</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/admin.js"></script>
 </body>
 </html>
